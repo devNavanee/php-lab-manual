@@ -1,0 +1,37 @@
+2.Program to do different types of Sorting in PHP 
+
+Aim: 
+To perform different types of sorting in PHP. 
+
+
+Procedure: 
+ Declare the array variable $numbers to set the maximum values in it. 
+ Compute the array length by specifying count() function to the declared variable. 
+ By using rsort built-in function descending order can be performed. 
+ By using sort function ascending order can be performed. 
+ For loop is used to iterate and manipulate the array list. 
+ Use echo statements to print the resultant value. 
+
+
+Program: 
+<?php 
+$numbers = array(4, 6, 2, 22, 11); 
+rsort($numbers); 
+echo "Descending Order"; 
+echo "<br>"; 
+$arrlength = count($numbers); 
+for($x = 0; $x < $arrlength; $x++) 
+{ 
+echo $numbers[$x]; 
+echo "<br>"; 
+} 
+sort($numbers); 
+echo "Ascending Order"; 
+echo "<br>"; 
+$arrlength = count($numbers); 
+for($x = 0; $x < $arrlength; $x++) 
+{ 
+echo $numbers[$x]; 
+echo "<br>"; 
+} 
+?>

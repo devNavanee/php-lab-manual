@@ -1,0 +1,36 @@
+6.Program to upload a file in PHP
+
+Aim:
+To perform uploading function for a file in PHP.
+Procedure:
+ Design the web page by using file control and submit button.
+ Locate a file from local drive of the PC by clicking browse button in the file control.
+ To upload a file set the target path to the specific location.
+ While user click the submit button move_uploaded_file functions helps to upload the 
+file from the source path to the target path successfully.
+ If the file size is larger than 2MB error message will be displayed onto the web page.
+
+Program:
+upload.html
+<html>
+<body>
+<form method="post" action="uploader.php" enctype="multipart/form-data">
+Select File:
+<input type="file" name="filetoupload" />
+<input type="submit" name="submit" value="upload"/>
+</form>
+</body>
+</html>
+
+uploader.php
+<?php
+$target_path="D:/";
+$target_path=$target_path.basename($_FILES['filetoupload']['name']);
+if(move_uploaded_file($_FILES['filetoupload']['tmp_name'],$target_path)){
+echo "File uploaded Successfully!...";
+}
+else
+{
+echo "Sorry,File not uploaded, Please try again later!";
+}
+?>

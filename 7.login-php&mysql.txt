@@ -1,0 +1,106 @@
+7.Program for login authentication using PHP and MySQL 
+
+Aim:
+To perform authentication for users / administrator using PHP and MYSQL.
+
+Procedure:
+ Create USER_DETAILS database in MySQL. Use the database name and create 
+Users table with fields as userId, username, password and displayName.
+ Insert record for the table
+ Read the input values as, username and password from the user.
+ Using source code connects to the MySQL database. It requires input parameters as, 
+hostname,username, password and database name.
+ Execute the MySQL query to authenticate the record is available in the database or 
+not.
+ If it is avail, display the message “You are successfully authenticated".
+ Else display Invalid Username or Password!
+CREATING TABLE AND INSERTING RECORD INTO MYSQL DATABASE: 
+CREATE TABLE IF NOT EXISTS users (userId int(8) NOT NULL AUTO_INCREMENT, 
+ username varchar(55) NOT NULL, password 
+ varchar(55) NOT NULL, displayName 
+varchar(55) 
+ NOT NULL, PRIMARY KEY (userId)); 
+INSERT INTO users (`userId`, `userName`, `password`, `displayName`) VALUES 
+ (1, 'admin', 'admin123', 'Admin'); 
+ 
+Login.php: 
+<?php 
+$message=""; 
+if(count($_POST)>0) { 
+$conn = mysqli_connect("localhost","root","root","userdeatils"); 
+$result = mysqli_query($conn,"SELECT * FROM users WHERE userName='" .
+$_POST["userName"] . "' and password = '". $_POST["password"]."'"); 
+$count = mysqli_num_rows($result); 
+if($count==0) { 
+$message = "Invalid Username or Password!"; 
+} 
+else { 
+$message = "You are successfully authenticated!"; 
+} 
+} 
+?> 
+
+<html> 
+<head> 
+<title>User Login</title> 
+<link rel="stylesheet" type="text/css" href="styles.css" /> 
+</head> 
+<body> 
+<form name="frmUser" method="post" action=""> 
+<div class="message"><?php if($message!="") { echo $message; } ?></div>
+<table border="0" cellpadding="10" cellspacing="1" width="500" align="center" 
+class="tblLogin"> 
+<tr class="tableheader"> 
+<td align="center" colspan="2">Enter Login Details</td> 
+</tr> 
+<tr class="tablerow"> 
+<td> 
+<input type="text" name="userName" placeholder="User Name" class="login-input"></td> 
+</tr> 
+<tr class="tablerow"> 
+<td> 
+<input type="password" name="password" placeholder="Password" class="logininput"></td> 
+</tr> 
+<tr class="tableheader"> 
+<td align="center" colspan="2"><input type="submit" name="submit" 
+value="Submit" class="btnSubmit"></td> 
+</tr> 
+</table> 
+</form> 
+</body>
+</html> 
+
+styles.css:
+body{ 
+font-family: calibri; 
+} 
+.tblLogin { 
+border: #95bee6 1px solid; 
+background: #d1e8ff; 
+border-radius: 4px; 
+} 
+.tableheader { 
+font-size: 24px; 
+} 
+.tableheader td { 
+padding: 20px; 
+} 
+.tablerow td{ 
+text-align:center; 
+} 
+.message { 
+color: #FF0000; 
+font-weight: bold; 
+text-align: center; 
+width: 100%; 
+} 
+.login-input { 
+border: #CCC 1px solid; 
+padding: 10px 20px; 
+} 
+.btnSubmit { 
+padding: 10px 20px; 
+background: #2c7ac5; 
+border: #d1e8ff 1px solid; 
+color: #FFF; 
+}

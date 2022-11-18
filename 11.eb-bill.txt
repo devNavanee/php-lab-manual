@@ -1,0 +1,70 @@
+11.Creating a Electricity bill using PHP and MySQL, and generate the Report
+
+Aim:
+To create a website with headings, paragraphs and links.
+
+Procedure:
+ Use the database name and create electricity table with fields as, 
+Service_no,Cus_name,Units and Amount.
+ Read the values Service number, Customer name, Total units from the user.
+ Compute charge is Rs. 1.20 if a total unit is less than 200. 
+ Otherwise, Check if total unit is greater than are equal to 200 and total unit is less than
+are equal to 400 then compute charge is Rs. 1.80 else compute charge is Rs. 2
+ To connect MySQL database. It requires input parameters as, hostname, username, 
+password and database name.
+ Execute the MySQL insert query to store the information into the databse.
+ Finally, display the generated electricity bill report onto the web page.
+CREATING TABLE IN MYSQL DATABASE
+CREATE TABLE IF NOT EXISTS electricity (Service_no varchar(12),Cus_name 
+varchar(55) NOT NULL);
+
+Program:
+<html>
+<head> 
+<title> Electricity Bill Generator </title>
+</head>
+Amount double 
+<body> <b><u>Enter Electricity Details</u></b> <br> 
+<form name="frmUser" method="post" action=""> 
+Service No: <br> 
+<input type="text" name="serviceno"> 
+<br>Customer Name: <br> 
+<input type="text" name="cusname"> 
+<br>Total Units: <br> 
+<input type="text" name="units"> 
+<br><br> 
+<input type="submit" name="submit" value="Submit"> 
+</form> 
+<?php 
+if(isset($_REQUEST["units"])) 
+{ 
+$tot_units=$_REQUEST["units"]; 
+$cname=$_REQUEST["cusname"]; 
+$service_no=$_REQUEST["serviceno"]; 
+if($tot_units < 200) 
+$charge=1.20; 
+else if(($tot_units >= 200) && ($tot_units<=400)) 
+$charge=1.80; else 
+$charge=2.00; 
+echo "The charge of One Unit is Rs." . $charge. " Calculated","<br>"; 
+$netamt=$tot_units * $charge; 
+echo "The Amount of <b> Rs.".$netamt. " </b> is generated to the customer: " .$cname. 
+"<br>"; 
+/* Attempt MySQL server connection. Assuming you are running MySQL 
+server with default setting (user 'root' with no password) */ 
+$link = mysqli_connect("192.168.24.181","root","","users_details"); 
+// Check connection if($link === false){ 
+die("ERROR: Could not connect. " . mysqli_connect_error()); 
+} 
+// Attempt insert query execution 
+$sql = "INSERT INTO electricity (service_no, cus_name, Units, Amount) VALUES 
+('$service_no','$cname',$tot_units,$netamt)"; if(mysqli_query($link, $sql)){ 
+ echo "Records inserted successfully."; 
+}
+else{
+echo "Error: Could not able to execute $sql.".mysqli_error($link);
+}
+mysqli_close($link);
+}
+</body>
+</html>

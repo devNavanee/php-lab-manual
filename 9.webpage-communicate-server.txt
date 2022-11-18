@@ -1,0 +1,94 @@
+9.Program to demonstrate how a web page can communicate with a web server while a 
+user type characters in an input field 
+
+Aim: 
+To create a website that can communicate with a web server while a user type characters in 
+an input field. 
+
+Procedure: 
+ By using HTML design the web page with text component. 
+ Create a javascript function that will accept the user input value from the text 
+component. 
+ It checks the length of the string. If it equals to 0, returns empty value will be 
+displayed onto the web page. 
+ Otherwise, by using GET method the value will be passed to the gethint.php file. 
+ Declare a[ ] to store the constant value in it. 
+ To receive the user input value from the HTML page $_REQUEST[“q”] is used. 
+ And the received value will be stored $q variable. 
+ If $q is not empty it will look up all hints from a[].If hint was found it displays correct
+values on to the web page otherwise, “no suggestion”. 
+ 
+Program: 
+Main.html 
+<html> 
+<head> <script> function showHint(str) { if (str.length == 0) { 
+ document.getElementById("txtHint").innerHTML = ""; return; 
+ } else { 
+ var xmlhttp = new XMLHttpRequest(); xmlhttp.onreadystatechange = function() { 
+if (this.readyState == 4 && this.status == 200) { 
+ document.getElementById("txtHint").innerHTML = this.responseText; 
+ } 
+ }; 
+ xmlhttp.open("GET", "gethint.php?q=" + str, true); xmlhttp.send(); 
+ } 
+} 
+</script> 
+</head> 
+<body> 
+<p><b>Start typing a name in the input field below:</b></p> 
+<form> 
+First name: <input type="text" onkeyup="showHint(this.value)"> 
+</form> 
+<p>Suggestions: <span id="txtHint"></span></p> 
+</body> 
+</html> 
+Gethint.php 
+<?php 
+// Array with names 
+$a[] = "Anna"; 
+$a[] = "Brittany"; 
+$a[] = "Cinderella"; 
+$a[] = "Diana"; 
+$a[] = "Eva"; 
+$a[] = "Fiona"; 
+$a[] = "Gunda"; 
+$a[] = "Hege"; 
+$a[] = "Inga"; 
+$a[] = "Johanna"; 
+$a[] = "Kitty"; 
+$a[] = "Linda"; 
+$a[] = "Nina"; 
+$a[] = "Ophelia"; 
+$a[] = "Petunia"; 
+$a[] = "Amanda"; 
+$a[] = "Raquel"; 
+$a[] = "Cindy"; 
+$a[] = "Doris"; 
+$a[] = "Eve"; 
+$a[] = "Evita"; 
+$a[] = "Sunniva"; 
+$a[] = "Tove"; $a[] = "Unni"; 
+$a[] = "Violet"; 
+$a[] = "Liza"; 
+$a[] = "Elizabeth"; 
+$a[] = "Ellen"; 
+$a[] = "Wenche"; 
+$a[] = "Vicky"; 
+$a[] = "PHP"; 
+// get the q parameter from URL 
+$q = $_REQUEST["q"]; 
+$hint = ""; 
+// lookup all hints from array if $q is different from "" 
+if ($q !== "") { $q = strtolower($q); 
+$len=strlen($q); foreach($a as $name) { 
+ if (stristr($q, substr($name, 0, $len))) { 
+if ($hint === "") { $hint = $name; 
+ } else { 
+ $hint .= ", $name"; 
+ } 
+ } 
+ } 
+} 
+// Output "no suggestion" if no hint was found or output correct values echo $hint 
+=== "" ? "no suggestion" : $hint; 
+?>

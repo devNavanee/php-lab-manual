@@ -1,0 +1,33 @@
+8.Creating a student data base with DML Queries
+
+Aim:
+To create a Student database and perform DML queries on it.
+
+Procedure:
+ Type this URL 192.168.27.171:801/phpmyadmin/ on your browser window to locate 
+your settings to MySQL.
+ Choose Database option and create a new database named it as student.
+ Use Student database to create a table named it as marks
+ Perform a DML (Data Manipulation Language) operation that includes most common
+SQL statements as, SELECT, INSERT, UPDATE, DELET commands to retrieve, 
+store, modify and remove the records in a database.
+ Display the records and show the result value
+
+Queries:
+Create database student;
+use student;
+//Table creation
+CREATE TABLE IF NOT EXISTS `marks`(`RegNo` varchar(8) NOT NULL DEFAULT 
+'','Name' varchar20) DEFAULT NULL, `Internal` int(2) NOT NULL, `External` int(3) NOT 
+NULL, 'Total' int(3) NOT NULL, PRIMARY KEY (`RegNo`));
+//Insert Command
+INSERT INTO `marks` (`RegNo`, `Name`, `Internal`, `External`, `Total`) VALUES 
+('15UCT001','RAMESH.S', 20, 45,65);
+INSERT INTO `marks` (`RegNo`, `Name`, `Internal`, `External`, `Total`) VALUES 
+('15UCT002','Siva', 10, 45,55);
+//Select Command
+Select * from 'marks';
+//Update Command 
+Update marks SET Name="Ramesh Kumar.S" where RegNo="15UCT001";
+//Delete Command 
+Delete from 'marks' where RegNo="15UCT001";

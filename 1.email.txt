@@ -1,0 +1,73 @@
+1.Program to send an HTML formatted Email in PHP 
+Aim: 
+To send an HTML formatted Email in PHP. 
+
+
+Procedure: 
+ To use, Gmail SMTP Server, the developer needs to change account access for less 
+secure applications. To complete this process. First, login to authenticated Google 
+account. 
+ Go to the Less Secure apps settings page otherwise 
+https://www.google.com/settings/security/lesssecureapps 
+ From Access for Less Secure apps section, select Turn on. 
+ Configure mail function in PHP Initialization file. 
+ Configure sendmail configuration file. 
+ Open the texteditor and create a php file for composing and sending e-mail. 
+ Declare the variable $to to Specify the receiver e-mail address. 
+ Mention the subject of the e-mail as $subject. 
+ Use HTML tags to design the body of the message. 
+ To send HTML mail, the Content-type header variable $headers[] is initialized in that,
+prototype, content type with character set and sender e-mail address are passed as an 
+input parameters. 
+ By using mail function and passing the parameter values (step 7, 8, 9, 10) the e-mail 
+is dispatched to the appropriate users. 
+
+
+Program: 
+Php.ini 
+SMTP=smtp.gmail.com smtp_port=587 
+sendmail_from = ngpct2015@gmail.com 
+sendmail_path = "\"C:\xampp\sendmail\sendmail.exe\" -t" 
+sendmail.ini 
+smtp_server=smtp.gmail.com smtp_port=587 
+auth_username=ngpct2015@gmail.com auth_password=2015batch 
+hostname=localhost 
+testmail.php 
+<?php 
+// Multiple recipients 
+$to = ' ngpct2015@drngpasc.ac.in'; // note the comma 
+// Subject 
+$subject = 'Birthday Reminders for Nov'; 
+// Message 
+$message = ' 
+<html> 
+<head> 
+<title>Birthday Reminders for Nov.</title> 
+</head> 
+<body> 
+<p>Here are the birthdays upcoming in November!</p> 
+<table> 
+<tr> 
+<th>Person</th><th>Day</th><th>Month</th><th>Year</th> 
+</tr> 
+<tr> 
+<td>Steve</td><td>10th</td><td>Nov</td><td>1970</td> 
+</tr> 
+<tr> 
+<td>Tom</td><td>17th</td><td>Nov</td><td>1973</td> 
+</tr> 
+</table> 
+</body> 
+</html>  '; 
+// To send HTML mail, the Content-type header must be set 
+$headers[] = 'MIME-Version: 1.0'; 
+$headers[] = 'Content-type: text/html; charset=iso-8859-1'; 
+$headers[] = "From: ngpct2015@gmail.com\r\n"; 
+// Mail it 
+if (mail($to, $subject, $message, implode("\r\n", $headers))) { 
+echo "SUCCESS"; 
+} 
+else { 
+echo "ERROR"; 
+} 
+?>

@@ -1,0 +1,36 @@
+3.Program to do String Manipulation in PHP 
+
+Aim: 
+To perform string manipulation in PHP. 
+Procedure: 
+ Assign the string constant value to string1 and string2 variable. 
+ By using string handling functions as, (string joining operator), strlen, strpos. 
+ The string manipulations like, joining of two strings, finding the length of the string, 
+computing the position of the string, convert character into ASCII code and white 
+space removal and can be performed. 
+ Incorporate HTML tags to design the web page. 
+ Use echo statements to print the resultant value. 
+Program: 
+ 
+<?php 
+$string1="Hello World"; 
+$string2="1234"; 
+echo "STRING CONCATENATION", "<br>"; 
+echo "<br>"; 
+echo $string1 . " " . $string2; 
+echo "<br>"; 
+echo "LENGTH OF THE STRING","<br>"; 
+echo strlen($string1); 
+echo "<br>"; 
+echo "STRING POSITION","<br>"; 
+echo "<br>"; 
+echo strpos($string1,"World"),"<br>"; 
+echo " CONVERT STRING TO VALUE","<br>"; 
+$text="8.0"; 
+$value=(float)$text; 
+echo $value / 2.0 ,"<br>"; 
+echo "CONVERT CHARACTER TO ASCII CODE","<br>"; 
+echo " Using ASCII code in php", chr(65), chr(66), chr(67),"< br>"; 
+echo " WHITE SPACE REMOVED FROM BEGINNING AND END","<br>"; 
+echo trim(" Learn PHP using W3School Website "),"<br>"; 
+?>
