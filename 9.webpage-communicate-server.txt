@@ -1,4 +1,4 @@
-9.Program to demonstrate how a web page can communicate with a web server while a 
+Program to demonstrate how a web page can communicate with a web server while a 
 user type characters in an input field 
 
 Aim: 
