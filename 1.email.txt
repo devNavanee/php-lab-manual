@@ -27,7 +27,7 @@ Program:
 Php.ini 
 SMTP=smtp.gmail.com smtp_port=587 
 sendmail_from = ngpct2015@gmail.com 
-sendmail_path = "\"C:\xampp\sendmail\sendmail.exe\" -t" 
+sendmail_path = "\"C:\" -t" 
 sendmail.ini 
 smtp_server=smtp.gmail.com smtp_port=587 
 auth_username=ngpct2015@gmail.com auth_password=2015batch 
@@ -71,3 +71,33 @@ else {
 echo "ERROR"; 
 } 
 ?>
+
+
+
+test.php
+
+<?php
+{
+echo'Your mail was sent successfully!';
+}
+?>
+<html> 
+<head> 
+<title>Birthday Reminders for Nov.</title> 
+</head> 
+<body> 
+<p>Here are the birthdays upcoming in November!</p> 
+<table> 
+<tr> 
+<th>Person</th><th>Day</th><th>Month</th><th>Year</th> 
+</tr> 
+<tr> 
+<td>Steve</td><td>10th</td><td>Nov</td><td>1970</td> 
+</tr> 
+<tr> 
+<td>Tom</td><td>17th</td><td>Nov</td><td>1973</td> 
+</tr> 
+</table>
+</form> 
+</body> 
+</html> 
