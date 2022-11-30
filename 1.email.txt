@@ -24,22 +24,11 @@ is dispatched to the appropriate users.
 
 
 Program: 
-Php.ini 
-SMTP=smtp.gmail.com smtp_port=587 
-sendmail_from = ngpct2015@gmail.com 
-sendmail_path = "\"C:\xampp\sendmail\sendmail.exe\" -t" 
-sendmail.ini 
-smtp_server=smtp.gmail.com smtp_port=587 
-auth_username=ngpct2015@gmail.com auth_password=2015batch 
-hostname=localhost 
-testmail.php 
-<?php 
-// Multiple recipients 
-$to = ' ngpct2015@drngpasc.ac.in'; // note the comma 
-// Subject 
-$subject = 'Birthday Reminders for Nov'; 
-// Message 
-$message = ' 
+<?php
+{
+echo'Your mail was sent successfully!';
+}
+?>
 <html> 
 <head> 
 <title>Birthday Reminders for Nov.</title> 
@@ -56,18 +45,7 @@ $message = '
 <tr> 
 <td>Tom</td><td>17th</td><td>Nov</td><td>1973</td> 
 </tr> 
-</table> 
+</table>
+</form> 
 </body> 
-</html>  '; 
-// To send HTML mail, the Content-type header must be set 
-$headers[] = 'MIME-Version: 1.0'; 
-$headers[] = 'Content-type: text/html; charset=iso-8859-1'; 
-$headers[] = "From: ngpct2015@gmail.com\r\n"; 
-// Mail it 
-if (mail($to, $subject, $message, implode("\r\n", $headers))) { 
-echo "SUCCESS"; 
-} 
-else { 
-echo "ERROR"; 
-} 
-?>
+</html> 
